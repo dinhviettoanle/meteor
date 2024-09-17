@@ -71,6 +71,12 @@
 
     <p>
       <i>Audio samples are synthesized from the generated MIDI files using the Musescore default soundfonts.</i><br>
+      <!-- Pre-defined ensembles:
+      <ul>
+        <li>Classical orchestra: Flute, Oboe, Clarinet, Bassoon, Horn, Trumpet, Timpani, Strings, Cello, Contrabass</li>
+        <li>String trio: Violin, Viola, Cello</li>
+        <li>Piano trio: Violin, Cello, Piano</li>
+      </ul> -->
     </p>
   </div>
 
@@ -90,13 +96,13 @@
         <div class="container">
 
           <div class="row py-2" style="border-bottom: 1pt solid;">
-            <div class="col-3">
+            <div class="col-2">
               <b>Reference</b>
             </div>
 
-            <div class="col-md-6">
-              <audio controls>
-                <source src="audio/style_transfer/example1/example1_orig.mp3" type="audio/mpeg" />
+            <div class="col">
+              <audio controls style="width:100%; max-width: none;">
+                <source src="audio/style_transfer/example1/example1_orig.mp3" type="audio/mpeg"  />
               </audio>
             </div>
           </div>
@@ -238,7 +244,7 @@
                 </div>
 
                 <div class="col-5 mb-4 extract">
-                  Instruments: <b>Strings trio</b><br>
+                  Instruments: <b>String trio</b><br>
                   Polyphonicity: Kept<br>
                   Rhythmicity: Kept <br>
                   Melody: <b>Violin</b> <br>
@@ -259,8 +265,8 @@
 
                 <div class="col-5 mb-4 extract">
                   Instruments: <b>Piano trio</b><br>
-                  Polyphonicity: <b>Kept</b><br>
-                  Rhythmicity: <b>Kept</b> <br>
+                  Polyphonicity: Kept<br>
+                  Rhythmicity: Kept <br>
                   Melody: <b>Cello then violin</b> <br>
                   Pitch diversity: Auto <br>
                   Pitch average: 
@@ -288,10 +294,49 @@
               <b>METEOR no melody</b>
             </div>
 
-            <div class="col-md-6">
-              <audio controls>
-                <source src="" type="audio/mpeg" />
-              </audio>
+            <div class="col">
+              <div class="row">
+                <div class="col-12 my-3">
+                  <h3>Instrumentation + Track-level controls</h3>
+                </div>
+                <div class="col-5 mb-4 extract">
+                  Instruments: <b>String trio</b><br>
+                  Polyphonicity: Kept<br>
+                  Rhythmicity: Kept <br>
+                  Pitch average: Auto <br>
+                  Pitch diversity:
+                  <ul>
+                    <li>Violin: High <b>(5/12)</b></li>
+                    <li>Viola: High <b>(5/12)</b></li>
+                    <li>Cello: Low <b>(1/12)</b></li>
+                  </ul>
+                  <audio controls>
+                    <source src="audio/style_transfer/example1/meteor_nomel_strtrio_diversity.mp3" type="audio/mpeg" />
+                  </audio>
+                </div>
+                <div class="col-7 mb-4">
+                  <img width="100%" src="images/meteor_nomel_strtrio_diversity.png">
+                </div>
+
+                <div class="col-5 mb-4 extract">
+                  Instruments: <b>Piano trio</b><br>
+                  Polyphonicity: Kept<br>
+                  Rhythmicity: Kept <br>
+                  Pitch diversity: Auto <br>
+                  Pitch average: 
+                  <ul>
+                    <li>Violin: Low then high <b>(60 then 90/130)</b></li>
+                    <li>Cello: High then low <b>(70 then 40/130)</b></li>
+                    <li>Piano: Medium <b>(60/130)</b></li>
+                  </ul>
+                  <audio controls>
+                    <source src="audio/style_transfer/example1/meteor_nomel_pianotrio_pitchrange.mp3" type="audio/mpeg" />
+                  </audio>
+                </div>
+                <div class="col-7 mb-4">
+                  <img width="100%" src="images/meteor_nomel_pianotrio_pitchrange.png">
+                </div>
+              </div>
             </div>
           </div>
 
@@ -300,11 +345,61 @@
             <div class="col-2">
               <b>MuseMorphose Multi-track</b>
             </div>
+            <div class="col">
+              <div class="row">
+                <div class="col-12 my-3">
+                  <h3>Instrumentation + Bar-level controls</h3>
+                </div>
+              <div class="col-4 mb-4 extract">
+                Instruments: <b>Solo piano</b><br>
+                Polyphonicity: Kept<br>
+                Rhythmicity: Kept <br>
+                <audio controls>
+                  <source src="audio/style_transfer/example1/multitrack_musemorphose_piano_PR0.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+              <div class="col-4 mb-4 extract">
+                Instruments: <b>Solo piano</b><br>
+                Polyphonicity: <b>+3</b><br>
+                Rhythmicity: <b>+3</b> <br>
+                <audio controls>
+                  <source src="audio/style_transfer/example1/multitrack_musemorphose_piano_PRp3.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+              <div class="col-4 mb-4 extract">
+                Instruments: <b>Solo piano</b><br>
+                Polyphonicity: <b>-3</b><br>
+                Rhythmicity: <b>-3</b> <br>
+                <audio controls>
+                  <source src="audio/style_transfer/example1/multitrack_musemorphose_piano_PRm3.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
 
-            <div class="col-md-6">
-              <audio controls>
-                <source src="" type="audio/mpeg" />
-              </audio>
+              <div class="col-4 mb-4 extract">
+                Instruments: <b>Classical orchestra</b><br>
+                Polyphonicity: Kept<br>
+                Rhythmicity: Kept <br>
+                <audio controls>
+                  <source src="audio/style_transfer/example1/multitrack_musemorphose_orch_PR0.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+              <div class="col-4 mb-4 extract">
+                Instruments: <b>Classical orchestra</b><br>
+                Polyphonicity: <b>+3</b><br>
+                Rhythmicity: <b>+3</b> <br>
+                <audio controls>
+                  <source src="audio/style_transfer/example1/multitrack_musemorphose_orch_PRp3.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+              <div class="col-4 mb-4 extract">
+                Instruments: <b>Classical orchestra</b><br>
+                Polyphonicity: <b>-3</b><br>
+                Rhythmicity: <b>-3</b> <br>
+                <audio controls>
+                  <source src="audio/style_transfer/example1/multitrack_musemorphose_orch_PRm3.mp3" type="audio/mpeg" />
+                </audio>
+              </div>
+            </div>
             </div>
           </div>
 
@@ -314,10 +409,27 @@
               <b>FIGARO</b>
             </div>
 
-            <div class="col-md-6">
-              <audio controls>
-                <source src="" type="audio/mpeg" />
-              </audio>
+            <div class="col">
+              <div class="row">
+                <div class="col-4 mb-4 extract">
+                  Extract 1<br>
+                  <audio controls>
+                    <source src="audio/style_transfer/example1/figaro_extract4.mp3" type="audio/mpeg" />
+                  </audio>
+                </div>
+                <div class="col-4 mb-4 extract">
+                  Extract 2<br>
+                  <audio controls>
+                    <source src="audio/style_transfer/example1/figaro_extract1.mp3" type="audio/mpeg" />
+                  </audio>
+                </div>
+                <div class="col-4 mb-4 extract">
+                  Extract 3<br>
+                  <audio controls>
+                    <source src="audio/style_transfer/example1/figaro_extract3.mp3" type="audio/mpeg" />
+                  </audio>
+                </div>
+              </div>
             </div>
           </div>
 
