@@ -13,30 +13,45 @@
       min-width: 220px;
     }
 
-
+    a {
+      color: royalblue;
+    }
 
     audio {
       height: 50px;
       min-width: 70px;
       max-width: 220px;
     }
-    
+
 
     .extract {
       border-left: 1pt solid;
+    }
+
+    .backtopButton {
+      position: fixed;
+      bottom: 5vh;
+      right: 5vh;
+      text-decoration: none;
+      font-size: xx-large;
     }
   </style>
 </head>
 
 <body>
-  <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+  <a href="" onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;event.preventDefault()"
+    class="backtopButton">&uarr;</a></a>
+
+  <div id="header" class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
     <div class="text-center pb-4">
-      <h1>METEOR: Melody-aware Texture-controllable<br>Symbolic Orchestral Music Generation</h1>
+      <h1>METEOR: Melody-aware Texture-controllable<br>Symbolic Orchestral Music Generation via Transformer VAE</h1>
       <p class="lead fw-bold">
         |
-        <a href="https://arxiv.org/abs/2409.11753" class="btn border-white bg-white fw-bold">paper</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2409.11753"
+          class="btn border-white bg-white fw-bold">paper</a>
         |
-        <a href="https://github.com/dinhviettoanle/meteor" class="btn border-white bg-white fw-bold">code</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/dinhviettoanle/meteor"
+          class="btn border-white bg-white fw-bold">code</a>
         |
         <a href="https://dinhviettoanle.github.io/meteor/" class="btn border-white bg-white fw-bold">demo</a>
         |
@@ -48,15 +63,18 @@
     </div>
     <p>
       <b>Abstract.</b>
-      Western music is often characterized by a homophonic texture, in which the musical content can be organized into a
-      melody and an accompaniment. In orchestral music, in particular, the composer can select specific characteristics
-      for each instrument's part within the accompaniment, while also needing to adapt the melody to suit the
-      capabilities of the instruments performing it.
-      In this work, we propose METEOR, a model for <b>Me</b>lody-aware <b>Te</b>xture-controllable <b>Or</b>chestral music generation. This
-      model performs symbolic multi-track music style transfer with a focus on melodic fidelity. We allow bar- and
-      track-level controllability of the accompaniment with various textural attributes while keeping a homophonic
-      texture. We show that the model can achieve controllability performances similar to strong baselines while greatly
-      improve melodic fidelity.
+      Re-orchestration is the process of adapting a music piece for a different set of instruments. By altering the
+      original instrumentation, the orchestrator often modifies the musical texture while preserving a recognizable
+      melodic line and ensures that each part is playable within the technical and expressive capabilities of the chosen
+      instruments.<br>
+      In this work, we propose METEOR, a model for generating <b>Me</b>lody-aware <b>Te</b>xture-controllable
+      re-<b>Or</b>chestration with a Transformer-based variational auto-encoder (VAE). This model performs symbolic
+      instrumental and textural music style transfers with a focus on melodic fidelity and controllability. We allow
+      bar- and track-level controllability of the accompaniment with various textural attributes while keeping a
+      homophonic texture. With both subjective and objective evaluations, we show that our model outperforms style
+      transfer models on a re-orchestration task in terms of generation quality and controllability. Moreover, it can be
+      adapted for a lead sheet orchestration task as a zero-shot learning model, achieving performance comparable to a
+      model specifically trained for this task.
     </p>
 
     <div class="row mb-4">
@@ -73,7 +91,7 @@
         <li>Piano trio: Violin, Cello, Piano</li>
       </ul> -->
     <ul>
-      <li><b><a href="#style-transfer">Style transfer</a></b></li>
+      <li><b><a href="#style-transfer">Re-orchestration</a></b></li>
       <ul>
         <li><a href="#style-example-1">Example 1</a></li>
         <li><a href="#style-example-2">Example 2</a></li>
@@ -84,6 +102,11 @@
         <li><a href="#leadsheet-example-2">Example 2 (Ding Dong Merrily on High)</a></li>
       </ul>
       <li><b><a href="#pitchclass-impact">Pitch class impact</a></b></li>
+      <li><b><a href="#userstudy-samples">User study samples (models comparison)</a></b></li>
+      <ul>
+        <li><a href="#userstudy-reorchestration">Re-orchestration</a></li>
+        <li><a href="#userstudy-leadsheet">Leadsheet orchestration</a></li>
+      </ul>
     </ul>
     <i>Audio samples are synthesized from the generated MIDI files using the Musescore default soundfonts.</i><br>
     </p>
@@ -92,7 +115,7 @@
 
   <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded" id="style-transfer">
     <div class="container p-3">
-      <h1>Style transfer</h1>
+      <h1>Re-orchestration</h1>
       <p>
         <i>The indicated polyphonicity and rhythmicity values are differences with the analyzed value from the reference
           piece.</i><br>
@@ -352,7 +375,7 @@
           </div>
 
           <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-          <div class="row py-2" style="border-bottom: 1pt solid;">
+          <!-- <div class="row py-2" style="border-bottom: 1pt solid;">
             <div class="col-sm-2 col-12 mb-sm-0 mb-4">
               <b>MuseMorphose Multi-track</b>
             </div>
@@ -419,8 +442,10 @@
               </div>
             </div>
           </div>
+          -->
 
           <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+          <!-- 
           <div class="row py-2" style="border-bottom: 1pt solid;">
             <div class="col-sm-2 col-12 mb-sm-0 mb-4">
               <b>FIGARO</b>
@@ -448,7 +473,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
 
         </div>
@@ -717,6 +742,7 @@
           </div>
 
           <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+          <!-- 
           <div class="row py-2" style="border-bottom: 1pt solid;">
             <div class="col-sm-2 col-12 mb-sm-0 mb-4">
               <b>MuseMorphose Multi-track</b>
@@ -784,8 +810,10 @@
               </div>
             </div>
           </div>
+          -->
 
           <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+          <!--
           <div class="row py-2" style="border-bottom: 1pt solid;">
             <div class="col-sm-2 col-12 mb-sm-0 mb-4">
               <b>FIGARO</b>
@@ -814,6 +842,7 @@
               </div>
             </div>
           </div>
+          -->
 
 
         </div>
@@ -1063,17 +1092,9 @@
   </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
+  <!-- ================================================================================================= -->
+  <!-- ================================================================================================= -->
+  <!-- ================================================================================================= -->
 
 
   <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded" id="pitchclass-impact">
@@ -1176,6 +1197,334 @@
   </div>
 
 
+  <!-- ================================================================================================= -->
+  <!-- ================================================================================================= -->
+  <!-- ================================================================================================= -->
+
+  <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded" id="userstudy-samples">
+    <div class="container p-3">
+      <h1>User study samples (models comparison)</h1>
+    </div>
+
+    <div style="border-bottom: 1pt solid;">
+    </div>
+
+    <div class="container py-2" id="userstudy-reorchestration">
+      <h2>Re-orchestration</h2>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Solo piano &rarr; orchestra</h3>
+        <div class="col-12 px-5">
+          <i>S. Rachmaninoff - Prelude in G minor (Op. 23 No. 5)</i>
+        </div>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_06_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_06_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_06_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_06_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Orchestra &rarr; percussion ensemble</h3>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_05_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_05_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_05_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_05_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Orchestra &rarr; orchestra</h3>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_01_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_01_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_01_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_01_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Trio &rarr; orchestra</h3>
+        <div class="col-12 px-5">
+          <i>D. Shostakovich - 5 Pieces For 2 Violins And Piano (Prelude)</i>
+        </div>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_07_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_07_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_07_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_07_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Orchestra &rarr; string quartet</h3>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_03_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_03_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_03_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_03_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Orchestra &rarr; solo piano</h3>
+        <div class="col-12 px-5">
+          <i>Secret Garden - You raise me up</i>
+        </div>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_04_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_04_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_04_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/reorchestration_a_04_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-bottom: 1pt solid;">
+    </div>
+
+    <div class="container py-2" id="userstudy-leadsheet">
+      <h2>Leadsheet orchestration</h2>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Leadsheet 1</h3>
+        <div class="col-12 px-5">
+          <i>L. Collins & A. Harvey - Delta Dawn</i>
+        </div>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_01_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_01_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_01_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_01_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Leadsheet 2</h3>
+        <div class="col-12 px-5">
+          <i>M. Frisina - Source de tout amour</i>
+        </div>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_02_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_02_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_02_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_02_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Leadsheet 3</h3>
+        <div class="col-12 px-5">
+          <i>A. Murray - I Just Fall in Love Again</i>
+        </div>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_03_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_03_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_03_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_03_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <!-- %%%%%%%%%%%%%%%%%%%%%%%%% -->
+      <div class="row py-2 extract mb-4">
+        <h3>Leadsheet 4</h3>
+        <div class="col-12 px-5">
+          <i>Katyusha (Russian folk song)</i>
+        </div>
+        <div class="col-sm-3 col-12">
+          Reference<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_04_reference.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          AccoMontage-band<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_04_model0.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          FIGARO<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_04_model2.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="col-sm-3 col-12">
+          METEOR<br>
+          <audio controls>
+            <source src="audio/user_study/leadsheet_0_04_model1.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+      <div style="border-bottom: 1pt solid;">
+      </div>
+    </div>
+  </div>
+
+
 
   </div>
 
@@ -1192,9 +1541,9 @@
 
 <script>
   function onlyPlayOneIn(container) {
-    container.addEventListener("play", function(event) {
-    audio_elements = container.getElementsByTagName("audio")
-      for(i=0; i < audio_elements.length; i++) {
+    container.addEventListener("play", function (event) {
+      audio_elements = container.getElementsByTagName("audio")
+      for (i = 0; i < audio_elements.length; i++) {
         audio_element = audio_elements[i];
         if (audio_element !== event.target) {
           audio_element.pause();
@@ -1202,8 +1551,8 @@
       }
     }, true);
   }
-  
-  document.addEventListener("DOMContentLoaded", function() {
+
+  document.addEventListener("DOMContentLoaded", function () {
     onlyPlayOneIn(document.body);
   });
 
