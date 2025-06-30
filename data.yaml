@@ -1,0 +1,65 @@
+# SymphonyNet leadsheet (skyline + chords in melody)
+midi_raw_path: musemorphose_data/SymphonyNet_Dataset
+midi_analyzed_path: musemorphose_data/symphonynet_full_multitrack_melfull/midi_analyzed
+
+multi_track: True
+multi_track_mapping: 'mmt'
+tokenization: 'remi'
+pitch_encoding: 'absolute'
+header_pitch_range: True
+header_repeatability: True
+header_chords: True
+header_melodic_instr: True
+melodic_tokens: 'track'
+melodic_tokens_position: 'before'
+order_first: 'beat'
+skip_splits: True
+
+
+corpus_path: musemorphose_data/symphonynet_leadsheet/corpus
+events_path: musemorphose_data/symphonynet_leadsheet/events
+melody_mask_path: musemorphose_data/symphonynet_leadsheet/melody
+musemorphose_path: musemorphose_data/symphonynet_leadsheet/remi
+pickle_path: musemorphose_data/symphonynet_leadsheet/pickles/test{}.pkl
+vocab_path: musemorphose_data/symphonynet_leadsheet/vocab.pkl
+cls_path: musemorphose_data/symphonynet_leadsheet/remi
+
+
+# ===============================================================
+# ===============================================================
+
+
+# # >>>>> Documentation <<<<<
+###### MIDI files (no chord analyis)
+# midi_raw_path: <path> 
+###### MIDI files with chord analysis
+# midi_analyzed_path: <path> 
+
+###### Split tracks or merge everything into single track
+# multi_track: <bool> 
+###### Mapping based on track program or names (predicted by Gemini) 
+# multi_track_mapping: <'mmt' or null> 
+###### Tokenization strategy 
+# tokenization: <'remi' or 'cpword'> // 'cpword' is deprecated
+###### Pitch tokens are MIDI numbers or PitchClass + Octave
+# pitch_encoding: <'absolute' or 'pitchclass'> 
+###### Include DescriptionPitchRange-instrument-value tokens in bar headers
+# header_pitch_range: <bool> 
+###### Include DescriptionChord tokens in bar headers
+# header_chords: <bool> 
+###### melody is detected based on the highest note or the highest track
+# melodic_tokens: <'note' or 'track' or null> 
+###### where are placed the melody tokens: at the beginning of the sequence in the header or at the note level
+# melodic_tokens_position: <'before' or 'note'>
+###### Token order : time-first or track-first
+# order_first: <'beat' or 'track'> 
+###### Skip the computation of splits
+# skip_splits: <bool> 
+
+# corpus_path: tests/corpus
+# events_path: tests/events
+# musemorphose_path: tests/remi
+# pickle_path: tests/pickles/test{}.pkl
+# vocab_path: tests/vocab.pkl
+# cls_path: tests/remi
+

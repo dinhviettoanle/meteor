@@ -1,0 +1,9 @@
+# Python compiled
+**/__pycache__
+**/.ipynb_checkpoints
+
+# Folders
+evaluations/
+temp/
+musemorphose_data/
+models/
